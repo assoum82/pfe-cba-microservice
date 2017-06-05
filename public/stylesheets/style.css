@@ -1,0 +1,41 @@
+.signup-form{
+  padding: 2% 2% 0 2%;
+}
+
+.signup-form p.help-block{
+  font-size: 2vh;
+}
+
+.signup-form p.text-right{
+  margin-top: 1vh;
+  font-size: 3vh;
+  font-weight: lighter;
+}
+
+.dont-section ul{
+  list-style: none;
+}
+
+li.dont-do-this:before{
+  content: '✗ ';
+  color: red;
+}
+
+li.do-this:before{
+  content: '✔ ';
+  color: #5cb85c;
+}
+
+.question-block:focus,
+.question-block:hover,
+.question-block:active,
+.question-selected{
+  border-left: 2px solid #428bca;
+}
+
+.timeCounter{
+  color: #5bc0de !important;
+}
+.timeCounter:hover{
+  color: white !important;
+}
