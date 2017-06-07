@@ -1,6 +1,6 @@
 var ExamModel = require('../models/ExamModel.js');
-var request = require('request');
-var apiURL = 'http://localhost:3000/dashboard/exam/answer'
+var AnswerModel = require('../models/AnswerModel.js');
+
 /**
  * ExamController.js
  *
@@ -40,8 +40,8 @@ module.exports = {
     },
     answerController: function(req, res){
       var code = req.body.code || '';
-      var name = req.body.name; // TODO: Add to front
-      var candidatsLog = req.body.candidat;
+      var name = req.body.name || '';
+      var candidatsLog = req.body.candidat || '';
       var answers = [];
 
       ExamModel.findOne({code: code}, function(err, Exam){
@@ -58,16 +58,36 @@ module.exports = {
           });
         });
 
-        request.post({url:'http://service.com/upload', formData: formData}, function optionalCallback(err, httpResponse, body) {
-          if (err) {
-            return res.status(404).json({
-              'message': "Error saving JSON",
+        var Answer = new AnswerModel({
+          'code': code,
+          'name': name,
+          'candidatsLog': candidatsLog,
+          'answers': answers
+        });
+
+        Answer.save(function(err, Answer){
+          if (err || !Answer) {
+            return res.status(500).json({
+              'message': "No such exam!",
             });
           }
-          return res.status(200).json({
-            'answers': "No such exam!",
-          });
+          return res.redirect('/exam/login');
         });
+      });
+    },
+    /**
+    * Get Answers for a given exam code
+    * @return JSON Array
+    */
+    getAnswers: function(req, res){
+      AnswerModel.find({code: req.body.code}, function(err, Answers){
+        if (err || !Answers) {
+          return res.status(404).json({
+            'message': "No such exam!",
+          });
+        }
+        console.log(Answers);
+        return res.status(200).json(Answers);
       });
     },
     /**

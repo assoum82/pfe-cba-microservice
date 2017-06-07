@@ -11,6 +11,7 @@ router.get('/login/', function(req, res, next) {
 
 router.post('/login', ExamController.openExam);
 router.post('/answer', ExamController.answerController);
+router.post('/answers/get', ExamController.getAnswers);
 
 /**
 * Get Exam by posting examCode and @return JSON

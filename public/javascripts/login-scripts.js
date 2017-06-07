@@ -21,4 +21,8 @@
       });
     },2000);
   });
+
+  $('#login-form').submit(function(){
+    localStorage.setItem('etest-student-name', $('input[name="name"]').val());
+  });
 }());

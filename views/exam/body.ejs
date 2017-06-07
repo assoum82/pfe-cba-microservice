@@ -59,6 +59,7 @@
           <div class="form-group text-center">
             <input type="text" name="candidat" hidden="hidden" style="opacity:0;">
             <input type="text" name="code" hidden="hidden" style="opacity:0;">
+            <input type="text" name="name" hidden="hidden" style="opacity:0;">
             <button type="button" class="btn btn-primary btn-lg" type="submit" id="submit-btn"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Submit answers</button>
           </div>
       </form>
@@ -78,7 +79,7 @@
         return <%= exam.duration ? exam.duration : 0 %>
       }
       window.getExamCode = function(){
-        return "<%= exam.code ? exam.code : "" %>"
+        return "<%= exam.code ? exam.code : '' %>"
       }
     </script>
     <script src="/javascripts/pass-exam.js"></script>

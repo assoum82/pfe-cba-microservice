@@ -1,5 +1,6 @@
 (function() {
   var code = getExamCode();
+  var studentName = localStorage.getItem('etest-student-name');
   var maxTime = getExamLength() * 60 * 1000;
   var candidatsLog = {
     'cheatingAttempts' : [],
@@ -15,6 +16,7 @@
     candidatsLog.time = maxTime / 1000;
     $('input[name="candidat"]').val(JSON.stringify(candidatsLog));
     $('input[name="code"]').val(code);
+    $('input[name="name"]').val(studentName);
     $('#answering-form').submit();
   };
 
@@ -74,7 +76,7 @@
   $(document).on("contextmenu",noCheatPlease);
   $(document).mouseleave(noCheatPlease);
 
-  var app = new Vue({
+  /* var app = new Vue({
     el: '#edit',
     data: {
       questions: "",
@@ -87,6 +89,6 @@
       }
     }
 
-  });
+  });*/
 
 }());
