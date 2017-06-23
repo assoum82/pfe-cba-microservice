@@ -16,7 +16,7 @@ if (loadEnv().error)
 
 //DB Declarations
 var mongoose = require('mongoose');
-var dbHost = process.env.DB_HOST || 'mongodb://localhost/test-db-pfe'; //use given DB or create new one on you localhost
+var dbHost = 'mongodb://fortas:oran@ds135912.mlab.com:35912/cba_microservice_pfe'; //use given DB or create new one on you localhost
 var app = express();
 
 // Connect to db:
