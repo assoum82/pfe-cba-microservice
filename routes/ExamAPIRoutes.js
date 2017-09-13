@@ -11,6 +11,7 @@ router.get('/:id', ExamController.show);
  * Create new exam, save it to DB
  */
 router.post('/', ExamController.create);
+router.post('/answers/get', ExamController.getAnswers);
 
 
 module.exports = router;
